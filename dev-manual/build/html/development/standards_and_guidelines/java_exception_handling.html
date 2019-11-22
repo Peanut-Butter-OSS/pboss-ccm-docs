@@ -1,0 +1,298 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Java Exception Handling &mdash; PBoss CCM 0.0.1 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/pboss_theme.css" type="text/css" />
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Javascript Syntax Standards" href="javascript_syntax_standards.html" />
+    <link rel="prev" title="Logging Standards" href="logging_standards.html" /> 
+
+  
+  <script src="../../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../../index.html" class="icon icon-home"> PBoss CCM
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../start_here.html">Start Here</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../overview/index.html">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../requirements/index.html">Requirements</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../architecture/index.html">Architecture</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../build/index.html">Build</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../index.html">Development</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../developer_tools.html">Developer Tools</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../getting_started/index.html">Getting Started</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="index.html">Development Standards and Guidelines</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="maven_standards.html">Maven Standards</a></li>
+<li class="toctree-l3"><a class="reference internal" href="git_standards.html">Git Standards</a></li>
+<li class="toctree-l3"><a class="reference internal" href="java_syntax_standards.html">Java Syntax Standards</a></li>
+<li class="toctree-l3"><a class="reference internal" href="logging_standards.html">Logging Standards</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">Java Exception Handling</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#which-exception-types-to-use-where">Which exception Types to use where</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="javascript_syntax_standards.html">Javascript Syntax Standards</a></li>
+<li class="toctree-l3"><a class="reference internal" href="css_syntax_standards.html">CSS Syntax Standards</a></li>
+<li class="toctree-l3"><a class="reference internal" href="sphinx_standards.html">Sphinx Standards</a></li>
+<li class="toctree-l3"><a class="reference internal" href="versioning_strategy.html">Versioning Strategy</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../test_plan/index.html">Test Plan</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../decisions/index.html">Decisions</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">PBoss CCM</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="../index.html">Development</a> &raquo;</li>
+        
+          <li><a href="index.html">Development Standards and Guidelines</a> &raquo;</li>
+        
+      <li>Java Exception Handling</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../../_sources/development/standards_and_guidelines/java_exception_handling.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="java-exception-handling">
+<span id="id1"></span><h1>Java Exception Handling<a class="headerlink" href="#java-exception-handling" title="Permalink to this headline">¶</a></h1>
+<p>Start by reading this article: <a class="reference external" href="http://www.codejava.net/java-core/exception/java-checked-and-unchecked-exceptions">http://www.codejava.net/java-core/exception/java-checked-and-unchecked-exceptions</a></p>
+<p>Whenever possible, the application should utilize Checked exceptions.</p>
+<p>The Following custom checked exceptions have been defined for the application and should be used
+wherever appropriate:</p>
+<ul class="simple">
+<li>DataMappingException</li>
+<li>DataEntityNotFoundException</li>
+<li>DataPathNotFoundException</li>
+<li>PrincipalNotFoundException</li>
+<li>RequiredDataMissingException</li>
+<li>ConfigurationException</li>
+<li>DataEntityCreationException</li>
+<li>DataEntityUpdateException</li>
+<li>PropertyNotFoundException</li>
+</ul>
+<p>All thrown exceptions should be explicitly caught, contextualized, logged and handled by the calling method.
+The code snippet below shows how to properly catch, contextualize and log an exception.</p>
+<div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="k">try</span> <span class="o">{</span>
+   <span class="c1">// Some Code that throws a checked exception</span>
+<span class="o">}</span> <span class="k">catch</span> <span class="o">(</span><span class="n">SomeException</span> <span class="n">e</span><span class="o">)</span> <span class="o">{</span>
+   <span class="n">String</span> <span class="n">msg</span> <span class="o">=</span> <span class="s">&quot;Exception occurred while trying to create a new FormType object in the JCR. Msg=&quot;</span><span class="o">+</span><span class="n">e</span><span class="o">.</span><span class="na">getMessage</span><span class="o">();</span>
+   <span class="n">LOGGER</span><span class="o">.</span><span class="na">error</span><span class="o">(</span><span class="n">msg</span><span class="o">);</span>
+   <span class="k">throw</span> <span class="k">new</span> <span class="n">DataEntityCreationException</span><span class="o">(</span><span class="n">msg</span><span class="o">,</span> <span class="n">e</span><span class="o">);</span>
+<span class="o">}</span>
+</pre></div>
+</div>
+<p>Notice the following about the approach followed:</p>
+<ul class="simple">
+<li>The Exception is given a simplistic name “e”</li>
+<li>A String parameter is built up containing relevant contextual information about the exception.</li>
+<li>The exception sctring is intended to be easily understood by someone who only has access to the log file and source code.</li>
+<li>The String message is logged using a Log4J ERROR level</li>
+<li>There is no e.printStackTrace()</li>
+<li>We don’t dump stacktraces all over the show, generally just in the highest level of the stack (for example a SlingModel, or Servlet)</li>
+<li>In the Sling model the logging statement will be: LOGGER.error(msg, e);</li>
+<li>In this particular case, the method of handling the exception is to throw it up the call stack (with information about the cause)</li>
+</ul>
+<p>“Handling” and exception can mean one of 3 things:</p>
+<ul class="simple">
+<li>(After adding context) throw the exception up the call stack</li>
+<li>Report the exception to the user. This will be done in the case of Servlets only</li>
+<li>Replace the data used and try again (or try another method)</li>
+</ul>
+<div class="section" id="which-exception-types-to-use-where">
+<h2>Which exception Types to use where<a class="headerlink" href="#which-exception-types-to-use-where" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><dl class="first docutils">
+<dt>ConstraintViolationException</dt>
+<dd><ul class="first last">
+<li>Use this exception for constraint validation failures. For example: Can’t create Form Type with code X, because another Form Type already exists with that code</li>
+<li>Typically we log these at WARN level (and without a stacktrace) because these are not actual system errors</li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="javascript_syntax_standards.html" class="btn btn-neutral float-right" title="Javascript Syntax Standards" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="logging_standards.html" class="btn btn-neutral" title="Logging Standards" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2019, Greg Fullard
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../../_static/jquery.js"></script>
+        <script type="text/javascript" src="../../_static/underscore.js"></script>
+        <script type="text/javascript" src="../../_static/doctools.js"></script>
+    
+
+  
+
+  <script type="text/javascript" src="../../_static/js/theme.js"></script>
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
