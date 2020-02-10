@@ -22,24 +22,24 @@ Step 1: Create a root folder on your file system, we will call this PROJECT_ROOT
 
 Step 2: Clone each of the repos (listed above) directly underneath PROJECT_ROOT, creating a structure like this:
 
-''' PROJECT_ROOT
-'''   |
-'''   +--pboss-ccm-env
-'''   +--pboss-ccm-docs
-'''   +--pboss-ccm-etc
-'''   +--pboss-ccm-testing
-'''   +--pboss-ccm-config
-'''   +--pboss-ccm-src
-'''         |
-'''         +--pboss-ccm-config-server
-'''         +--pboss-ccm-core-engine
-'''         +--pboss-ccm-core-utils
-'''         +--pboss-ccm-eureka
-'''         +--pboss-ccm-model
-'''         +--pboss-ccm-on-demand-api
-'''         +--pboss-ccm-on-demand-request-svc
-'''         +--pboss-ccm-test-edge-svc
-'''         +--pboss-ccm-test-svc
+     PROJECT_ROOT
+       |
+       +--pboss-ccm-env
+       +--pboss-ccm-docs
+       +--pboss-ccm-etc
+       +--pboss-ccm-testing
+       +--pboss-ccm-config
+       +--pboss-ccm-src
+             |
+             +--pboss-ccm-config-server
+             +--pboss-ccm-core-engine
+             +--pboss-ccm-core-utils
+             +--pboss-ccm-eureka
+             +--pboss-ccm-model
+             +--pboss-ccm-on-demand-api
+             +--pboss-ccm-on-demand-request-svc
+             +--pboss-ccm-test-edge-svc
+             +--pboss-ccm-test-svc
 
 Step 3: Build and run the Config SpringBoot app
 
