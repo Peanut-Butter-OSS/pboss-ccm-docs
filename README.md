@@ -12,34 +12,33 @@ In particular:
 * The pboss-ccm-docs repo will contain the documentation and requirements
 * The pboss-ccm-etc repo will contain miscellaneous things that we don't know where to store
 * The pboss-ccm-testing repo will contain our test files and test code
-* The pboss-ccm-config repo will contain the Spring Cloud Config git repo
+* The pboss-ccm-config-repo repo will contain the Spring Cloud Config git repo
 * The pboss-ccm-src will contain the application source code, i.e. all microservices
 
-## Your first PBoss sarmie
+## Your first peanut butter sarmie
 If this is your first interaction with PBOSS CCM, we'd suggest taking the following steps:
 
 Step 1: Create a root folder on your file system, we will call this PROJECT_ROOT in the instructions below
 
 Step 2: Clone each of the repos (listed above) directly underneath PROJECT_ROOT, creating a structure like this:
 
-     PROJECT_ROOT
-       |
-       +--pboss-ccm-env
-       +--pboss-ccm-docs
-       +--pboss-ccm-etc
-       +--pboss-ccm-testing
-       +--pboss-ccm-config
-       +--pboss-ccm-src
-             |
-             +--pboss-ccm-config-server
-             +--pboss-ccm-core-engine
-             +--pboss-ccm-core-utils
-             +--pboss-ccm-eureka
-             +--pboss-ccm-model
-             +--pboss-ccm-on-demand-api
-             +--pboss-ccm-on-demand-request-svc
-             +--pboss-ccm-test-edge-svc
-             +--pboss-ccm-test-svc
+    PROJECT_ROOT
+    ├── pboss-ccm-config-repo
+    ├── pboss-ccm-docs
+    ├── pboss-ccm-env
+    ├── pboss-ccm-etc
+    ├── pboss-ccm-src
+    │   ├── pboss-ccm-config-server
+    │   ├── pboss-ccm-core-engine
+    │   ├── pboss-ccm-core-utils
+    │   ├── pboss-ccm-eureka
+    │   ├── pboss-ccm-model
+    │   ├── pboss-ccm-on-demand-api
+    │   ├── pboss-ccm-on-demand-request-svc
+    │   ├── pboss-ccm-test-edge-svc
+    │   ├── pboss-ccm-test-svc
+    ├── pboss-ccm-testing
+    └── Servers
 
 Step 3: Build and run the Config SpringBoot app
 
