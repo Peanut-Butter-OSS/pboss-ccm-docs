@@ -8,15 +8,17 @@ In particular:
 * The Project itself will be a GitHub project (Not Repo), called PBoss-CCM
 * From an IDE perspective, the pboss-ccm folder will be used as an Eclipse workspace
 * A single master repo, called pboss-ccm is used to contain just this README and little else. Eventually it will serve as a meta repo
-* The pboss-ccm-env repo will contain environment related files etc. This will include things like sheel scripts and docker-compose files
+* The pboss-ccm-env repo will contain environment related files etc. This will include things like shell scripts and docker-compose files
 * The pboss-ccm-docs repo will contain the documentation and requirements
 * The pboss-ccm-etc repo will contain miscellaneous things that we don't know where to store
 * The pboss-ccm-testing repo will contain our test files and test code
-* The pboss-ccm-config-repo repo will contain the Spring Cloud Config git repo
+* The pboss-ccm-config-repo repo will contain the Spring Cloud Config git repo. This is where the configs of all services are maintained
 * The pboss-ccm-src will contain the application source code, i.e. all microservices
 
 ## Your first peanut butter sarmie
 If this is your first interaction with PBOSS CCM, we'd suggest taking the following steps:
+
+Note: These steps have not been tested
 
 Step 1: Create a root folder on your file system, we will call this PROJECT_ROOT in the instructions below
 
@@ -40,20 +42,59 @@ Step 2: Clone each of the repos (listed above) directly underneath PROJECT_ROOT,
     ├── pboss-ccm-testing
     └── Servers
 
-Step 3: Build and run the Config SpringBoot app
+Step 3: Start Rabbit MQ docker container
 
-Step 4: Build and run the Eureka SpringBoot app
+    cd [PROJECT_ROOT]/pboss-ccm-env/docker
+    docker-compose up
+    
+    Confirm the server is up by accessing http://localhost:9072/
+    Note: default credentials are guest:guest
 
-Step 5: Build and run the on-demand-api SpringBoot app
+Step 4: Build and run the Config Server SpringBoot app
 
-Step 6: Build and run the on-demand-request-svc SpringBoot app
+    cd [PROJECT_ROOT]/pboss-ccm-src/pboss-ccm-config-server
+    mvn clean install
+    java -jar target/pboss-ccm-config-server-0.0.1-SNAPSHOT.jar 
+    
+    Confirm server is up by accessing: http://localhost:8888/actuator/health
+
+Step 5: Build and run the Eureka SpringBoot app
+
+    cd [PROJECT_ROOT]/pboss-ccm-src/pboss-ccm-eureka
+    mvn clean install
+    java -jar target/pboss-ccm-eureka-0.0.1-SNAPSHOT.jar 
+    
+    Confirm server is running by accessing: http://localhost:8761/ 
+
+Step 6: Build the model project
+
+    cd [PROJECT_ROOT]/pboss-ccm-src/pboss-ccm-model
+    mvn clean install
 
 Step 7: Import the Postman collection
 
 * Make sure you have PostMan installed on your local machine
 * Import the Postman collection (/pboss-ccm/pboss-ccm-testing/Postman/PBoss_CCM.postman_collection.json) into your postman
 
-Step 8: Send a test request
+Step 8: Build and run the pboss-ccm-on-demand-request-svc SpringBoot app
+
+    cd [PROJECT_ROOT]/pboss-ccm-src/pboss-ccm-on-demand-request-svc
+    mvn clean install
+    java -jar target/pboss-ccm-on-demand-request-svc-0.0.1-SNAPSHOT.jar
+    
+    To confirm the service is running, submit the following request from PostMan: OnDemandRequestSvc_INTERNAL/Submit_SanityTest
+	Note: you can also open the RabbitMQ console and check that a message appears in the pboss.ccm.master queue
+
+Step 9: Build and run the on-demand-api SpringBoot app
+
+    cd [PROJECT_ROOT]/pboss-ccm-src/pboss-ccm-on-demand-api
+    mvn clean install
+    java -jar target/pboss-ccm-on-demand-api-0.0.1-SNAPSHOT.jar
+
+    To confirm the service is running, submit the following request from PostMan: OnDemandApi_EDGE/EDGE_Submit_SanityTest
+	Note: you can also open the RabbitMQ console and check that a message appears in the pboss.ccm.master queue
+
+Step n: No be added later
 
 
 ## Sphinx Documentation
